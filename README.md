@@ -8,6 +8,8 @@ An agent skill for Claude Code and Codex (and other runtimes that read `SKILL.md
    - short **prose** for single ideas
 2. **It writes the words in Simplified Technical English.** This is ASD-STE100, the controlled language from aerospace maintenance docs, applied about 80% of the way: short sentences, one idea each, active voice, one word per concept.
 
+The idea comes from [Andrej Karpathy's post](https://x.com/karpathy/status/2105819303471976479). It ranks three ways to get explanations from an LLM, each better than the last: STE writing, then diagrams, then interactive web pages. This skill turns that ranking into a rule for choosing the medium.
+
 The skill triggers on "explain", "walk me through", "how does X work", "summarize this change", and similar requests.
 
 ## Install
