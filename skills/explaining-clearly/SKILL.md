@@ -41,8 +41,16 @@ If the user names a medium ("just tell me", "draw it", "make a page"), use their
 
 ### Diagram
 
-- In a terminal or a repo doc: **Mermaid**. `sequenceDiagram` for a request path,
-  `flowchart` for topology or decisions, `stateDiagram-v2` for a lifecycle.
+Chat replies do not render Mermaid — a mermaid code block shows up as raw text.
+Pick the format by where the diagram will be read. First match wins:
+
+| Where it is read | Format |
+|---|---|
+| Chat, and an inline visual tool exists (e.g. `show_widget` / visualize) | Render it with that tool as SVG |
+| Chat, and an Artifact / page tool exists, or you can write an `.html` file | A small HTML page with an inline SVG diagram (or Mermaid loaded from a CDN inside the page) |
+| Chat in a plain terminal with neither | ASCII box-and-arrow diagram in a plain code block |
+| A markdown file rendered by GitHub (repo docs, PR description) | Mermaid: `sequenceDiagram` for a request path, `flowchart` for topology, `stateDiagram-v2` for a lifecycle |
+
 - Label every edge with what crosses it (call, payload, event, credential). An
   unlabelled arrow is a guess the reader must make.
 - ≤ ~12 nodes. If bigger, draw the overview, then one diagram per zoomed part.
@@ -72,6 +80,7 @@ site." Do not hedge every sentence.
 
 1. Does the first sentence answer the question?
 2. Does the content match the medium table — or is there a flow written as prose?
+   Will the diagram render where it is read?
 3. Any sentence over 25 words? Split it.
 4. Any concept with two names? Pick one.
 5. Is every code claim pinned to `file:line`?
@@ -80,6 +89,8 @@ site." Do not hedge every sentence.
 
 - **Long terminal answer for a multi-part system.** Over ~400 words with sections
   means a page, not scrollback.
+- **Mermaid in a chat reply.** It renders as code, not a picture. Use the
+  "Where it is read" table under Diagram.
 - **Diagram as decoration.** A diagram that repeats a list adds nothing. Draw
   relationships, order, or flow.
 - **Page without a summary in chat.** The user must get the core answer without
